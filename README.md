@@ -207,7 +207,7 @@ http://localhost:3000
 
 # 📸 Screenshots
 
-*Add screenshots here if needed.*
+<img width="1892" height="910" alt="image" src="https://github.com/user-attachments/assets/7428e8be-414a-4027-ad19-cb9c4a111a4e" />
 
 ---
 
