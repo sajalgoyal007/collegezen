@@ -1,62 +1,227 @@
-# CollegeZen
+# 🎓 CollegeZen
 
-A modern college discovery and comparison platform built with Next.js 15, TypeScript, Tailwind CSS, and Prisma.
+CollegeZen is a production-grade college discovery and decision platform inspired by Careers360 and Collegedunia.
 
-## Tech Stack
+The platform helps students:
+- Discover colleges
+- Compare institutions
+- Predict admission chances
+- Save colleges and comparisons
+- Explore placements, courses, and reviews
 
-- **Framework:** Next.js 15 (App Router)
-- **Language:** TypeScript (Strict Mode)
-- **Styling:** Tailwind CSS v4
-- **ORM:** Prisma
-- **Database:** PostgreSQL
-- **Linting:** ESLint
+Built with a modern full-stack architecture using Next.js, TypeScript, Prisma, PostgreSQL, and Tailwind CSS.
 
-## Getting Started
+---
 
-### Prerequisites
+# 🚀 Live Demo
 
-- Node.js 18.18+
-- PostgreSQL database
+## 🌐 Frontend
+https://collegezen.vercel.app/colleges
 
-### Installation
+## 🔗 Backend API
+https://collegezen.vercel.app/api/colleges
+
+---
+
+# ✨ Features
+
+## 🔍 College Listing + Search
+- Search colleges by name
+- Filter by location, fees, and course type
+- Responsive card-based UI
+- Dynamic API-powered listing
+- Pagination support
+
+## 🏫 College Detail Page
+- Overview section
+- Courses offered
+- Placement statistics
+- Student reviews
+- Dynamic routing with Next.js App Router
+
+## ⚖️ Compare Colleges
+- Compare 2–3 colleges side-by-side
+- Compare:
+  - Fees
+  - Ratings
+  - Placement percentage
+  - Location
+
+## 🧠 Predictor Tool
+- Input exam and rank
+- Get predicted colleges
+- Rule-based prediction engine
+
+## 🔐 Authentication & Saved Items
+- User login/register
+- Save colleges
+- Save comparisons
+- User profile page
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS
+
+## Backend
+- Next.js API Routes
+- REST APIs
+
+## Database
+- PostgreSQL (Supabase)
+
+## ORM
+- Prisma ORM
+
+## Authentication
+- NextAuth
+
+## Deployment
+- Vercel
+
+---
+
+# 🧱 System Architecture
+
+```txt
+Frontend (Next.js + Tailwind)
+        ↓
+API Routes (Next.js Backend)
+        ↓
+Prisma ORM
+        ↓
+PostgreSQL (Supabase)
+````
+
+---
+
+# 📂 Project Structure
+
+```txt
+src/
+├── app/
+│   ├── api/                 # Backend API routes
+│   ├── colleges/            # College pages
+│   ├── compare/             # Compare module
+│   ├── predictor/           # Predictor tool
+│   ├── profile/             # User profile
+│   ├── login/               # Authentication
+│   └── register/
+│
+├── components/
+│   ├── college/
+│   ├── predictor/
+│   ├── compare/
+│   ├── layout/
+│   └── ui/
+│
+├── hooks/
+├── lib/
+│   ├── prisma.ts
+│   └── auth.ts
+│
+├── services/
+├── types/
+│
+prisma/
+├── schema.prisma
+└── seed.ts
+```
+
+---
+
+# ⚙️ Local Setup
+
+## Prerequisites
+
+* Node.js 18+
+* PostgreSQL database
+
+---
+
+## Installation
 
 ```bash
 npm install
 ```
 
-### Development
+---
+
+## Environment Variables
+
+Create a `.env` file:
+
+```env
+DATABASE_URL=your_database_url
+DIRECT_URL=your_direct_database_url
+
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret
+
+AUTH_SECRET=your_secret
+AUTH_URL=http://localhost:3000
+```
+
+---
+
+## Prisma Setup
+
+```bash
+npx prisma generate
+npx prisma db push
+npx prisma db seed
+```
+
+---
+
+## Run Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
+Open:
 
-### Build
-
-```bash
-npm run build
-npm start
+```txt
+http://localhost:3000
 ```
 
-## Project Structure
+---
+
+# 📡 API Endpoints
+
+| Endpoint               | Description        |
+| ---------------------- | ------------------ |
+| `/api/colleges`        | Fetch all colleges |
+| `/api/colleges/[slug]` | College details    |
+| `/api/compare`         | Compare colleges   |
+| `/api/predictor`       | Predictor API      |
+| `/api/auth/register`   | Register user      |
+| `/api/saved`           | Saved colleges     |
+
+---
+
+# 📸 Screenshots
+
+*Add screenshots here if needed.*
+
+---
+
+# 👨‍💻 Author
+
+## Sajal Goyal
+
+B.Tech Student • Full Stack Developer
+
+---
+
+# 📄 License
+
+This project is built for educational and evaluation purposes.
 
 ```
-src/
-├── app/              # Next.js App Router pages & layouts
-│   ├── layout.tsx    # Root layout
-│   ├── page.tsx      # Homepage
-│   └── globals.css   # Global styles & Tailwind
-├── components/       # Reusable UI components
-│   ├── layout/       # Layout components (Navbar, Footer)
-│   └── ui/           # UI primitives
-├── lib/              # Utility functions & shared logic
-│   └── prisma.ts     # Prisma client singleton
-└── types/            # TypeScript type definitions
-prisma/
-└── schema.prisma     # Prisma schema (PostgreSQL)
 ```
-
-## License
-
-Private
