@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 const prisma = new PrismaClient();
 
 // Helper to build gallery
@@ -77,7 +77,15 @@ interface CollegeSeed {
   affiliation: string; campusSize: string; totalStudents: number; totalFaculty: number;
   website: string;
   courses: { name: string; duration: string; fees: number; eligibility: string; seats: number; type: string }[];
-  placement: { year: number; averagePackage: number; highestPackage: number; medianPackage: number; placementPercentage: number; totalOffers: number; topRecruiters: unknown[] };
+  placement: {
+  year: number;
+  averagePackage: number;
+  highestPackage: number;
+  medianPackage: number;
+  placementPercentage: number;
+  totalOffers: number;
+  topRecruiters: Prisma.JsonArray;
+};
   reviews: { author: string; avatar: string; graduationYear: number; course: string; rating: number; title: string; text: string; helpful: number }[];
   galleryLabels: string[];
   galleryGradients: [string, string][];
