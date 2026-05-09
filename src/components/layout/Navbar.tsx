@@ -57,7 +57,7 @@ export default function Navbar() {
                   </svg>
                   Saved
                 </Link>
-                <div className="flex items-center gap-2">
+                <Link href="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity" id="nav-profile">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white text-xs font-bold">
                     {session.user?.name?.charAt(0).toUpperCase() ?? "U"}
                   </div>
@@ -65,7 +65,7 @@ export default function Navbar() {
                     <p className="text-xs font-medium text-white leading-tight">{session.user?.name}</p>
                     <p className="text-[10px] text-surface-200/40 leading-tight">{session.user?.email}</p>
                   </div>
-                </div>
+                </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
                   className="px-4 py-2 text-sm font-medium text-red-400/70 hover:text-red-400 hover:bg-red-500/5 rounded-lg transition-colors duration-200"
