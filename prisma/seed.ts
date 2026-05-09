@@ -6,8 +6,13 @@ const gallery = (g: [string, string][], labels: string[]) =>
   labels.map((label, i) => ({ alt: label, gradient: g[i % g.length], label }));
 
 // Helper for recruiters JSON
-const recruiters = (list: { name: string; logoGradient: [string, string]; acronym: string }[]) =>
-  JSON.parse(JSON.stringify(list));
+const recruiters = (
+  list: { name: string; logoGradient: [string, string]; acronym: string }[]
+) =>
+  list.map((item) => ({
+    ...item,
+    logoGradient: item.logoGradient as [string, string],
+  }));
 
 const TECH_RECRUITERS = [
   { name: "Google", logoGradient: ["#4285F4", "#34A853"], acronym: "G" },
