@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { DETAIL_SECTIONS } from "@/types/college";
 
 export default function SectionNav() {
-  const [activeSection, setActiveSection] = useState(DETAIL_SECTIONS[0].id);
+  const [activeSection, setActiveSection] = useState<string>(DETAIL_SECTIONS[0].id);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
