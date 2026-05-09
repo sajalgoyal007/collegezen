@@ -15,19 +15,58 @@ const recruiters = (
   }));
 
 const TECH_RECRUITERS = [
-  { name: "Google", logoGradient: ["#4285F4", "#34A853"], acronym: "G" },
-  { name: "Microsoft", logoGradient: ["#00A4EF", "#7FBA00"], acronym: "MS" },
-  { name: "Amazon", logoGradient: ["#FF9900", "#232F3E"], acronym: "AMZ" },
-  { name: "Goldman Sachs", logoGradient: ["#6BA3D6", "#1D3557"], acronym: "GS" },
-  { name: "McKinsey", logoGradient: ["#004B87", "#0072CE"], acronym: "McK" },
-  { name: "Deloitte", logoGradient: ["#86BC25", "#0076A8"], acronym: "DT" },
+  { 
+    name: "Google", 
+    logoGradient: ["#4285F4", "#34A853"] as [string, string], 
+    acronym: "G" 
+  },
+  { 
+    name: "Microsoft", 
+    logoGradient: ["#00A4EF", "#7FBA00"] as [string, string], 
+    acronym: "MS" 
+  },
+  { 
+    name: "Amazon", 
+    logoGradient: ["#FF9900", "#232F3E"] as [string, string], 
+    acronym: "AMZ" 
+  },
+  { 
+    name: "Goldman Sachs", 
+    logoGradient: ["#6BA3D6", "#1D3557"] as [string, string], 
+    acronym: "GS" 
+  },
+  { 
+    name: "McKinsey", 
+    logoGradient: ["#004B87", "#0072CE"] as [string, string], 
+    acronym: "McK" 
+  },
+  { 
+    name: "Deloitte", 
+    logoGradient: ["#86BC25", "#0076A8"] as [string, string], 
+    acronym: "DT" 
+  },
 ];
-
 const MED_RECRUITERS = [
-  { name: "Apollo Hospitals", logoGradient: ["#1d4ed8", "#3b82f6"], acronym: "APL" },
-  { name: "Fortis Healthcare", logoGradient: ["#059669", "#10b981"], acronym: "FTS" },
-  { name: "Max Healthcare", logoGradient: ["#dc2626", "#ef4444"], acronym: "MAX" },
-  { name: "AIIMS Network", logoGradient: ["#0ea5e9", "#6366f1"], acronym: "AIM" },
+  {
+    name: "Apollo Hospitals",
+    logoGradient: ["#1d4ed8", "#3b82f6"] as [string, string],
+    acronym: "APL",
+  },
+  {
+    name: "Fortis Healthcare",
+    logoGradient: ["#059669", "#10b981"] as [string, string],
+    acronym: "FTS",
+  },
+  {
+    name: "Max Healthcare",
+    logoGradient: ["#dc2626", "#ef4444"] as [string, string],
+    acronym: "MAX",
+  },
+  {
+    name: "AIIMS Network",
+    logoGradient: ["#0ea5e9", "#6366f1"] as [string, string],
+    acronym: "AIM",
+  },
 ];
 
 interface CollegeSeed {
