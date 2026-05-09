@@ -1,0 +1,176 @@
+// CollegeZen Prisma Schema
+// PostgreSQL database with production-ready models
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ── College ─────────────────────────────────────────────
+
+model College {
+  id              String   @id @default(cuid())
+  name            String
+  slug            String   @unique
+  location        String
+  city            String
+  state           String
+  description     String
+  longDescription String?  @db.Text
+  fees            Int
+  rating          Float    @default(0)
+  reviewCount     Int      @default(0)
+  established     Int
+  imageUrl        String   @default("")
+  logoGradient    String[] // [color1, color2]
+  acronym         String
+  accreditation   String
+  featured        Boolean  @default(false)
+  affiliation     String?
+  campusSize      String?
+  totalStudents   Int?
+  totalFaculty    Int?
+  website         String?
+  courseTypes      String[] // ["Engineering", "Medical", ...]
+
+  courses    Course[]
+  placements PlacementStat[]
+  reviews    Review[]
+  savedBy    SavedCollege[]
+  gallery    GalleryImage[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([state])
+  @@index([rating])
+  @@index([fees])
+  @@index([featured])
+}
+
+// ── Course ──────────────────────────────────────────────
+
+model Course {
+  id          String @id @default(cuid())
+  name        String
+  duration    String
+  fees        Int
+  eligibility String
+  seats       Int
+  type        String // "Engineering", "Medical", etc.
+
+  college   College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  collegeId String
+
+  @@index([collegeId])
+}
+
+// ── Placement Statistics ────────────────────────────────
+
+model PlacementStat {
+  id                  String @id @default(cuid())
+  year                Int
+  averagePackage      Int
+  highestPackage      Int
+  medianPackage       Int
+  placementPercentage Int
+  totalOffers         Int
+  topRecruiters       Json   // Array of { name, logoGradient, acronym }
+
+  college   College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  collegeId String
+
+  @@unique([collegeId, year])
+  @@index([collegeId])
+}
+
+// ── Review ──────────────────────────────────────────────
+
+model Review {
+  id             String @id @default(cuid())
+  author         String
+  avatar         String
+  graduationYear Int
+  course         String
+  rating         Float
+  title          String
+  text           String @db.Text
+  helpful        Int    @default(0)
+
+  college   College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  collegeId String
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+
+  createdAt DateTime @default(now())
+
+  @@index([collegeId])
+  @@index([userId])
+  @@index([rating])
+}
+
+// ── Gallery Image ───────────────────────────────────────
+
+model GalleryImage {
+  id       String   @id @default(cuid())
+  alt      String
+  gradient String[] // [color1, color2]
+  label    String
+
+  college   College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  collegeId String
+
+  @@index([collegeId])
+}
+
+// ── User ────────────────────────────────────────────────
+
+model User {
+  id       String @id @default(cuid())
+  email    String @unique
+  name     String
+  password String // hashed
+
+  reviews            Review[]
+  savedColleges      SavedCollege[]
+  savedComparisons   SavedComparison[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ── Saved College (many-to-many) ────────────────────────
+
+model SavedCollege {
+  id String @id @default(cuid())
+
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  college   College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+  collegeId String
+
+  savedAt DateTime @default(now())
+
+  @@unique([userId, collegeId])
+  @@index([userId])
+  @@index([collegeId])
+}
+
+// ── Saved Comparison ────────────────────────────────────
+
+model SavedComparison {
+  id    String @id @default(cuid())
+  label String // user-given label or auto-generated
+  slugs String[] // array of college slugs
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
