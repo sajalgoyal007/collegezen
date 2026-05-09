@@ -14,7 +14,7 @@ function formatCurrency(amount: number): string {
 }
 
 export default function PredictionCard({ result, index }: PredictionCardProps) {
-  const { cutoff, chance, userRank, closingRank, gap } = result;
+  const { cutoff, chance, closingRank, gap } = result;
 
   return (
     <div
