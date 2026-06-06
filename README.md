@@ -215,7 +215,7 @@ http://localhost:3000
 
 ## Sajal Goyal
 
-B.Tech Student • Full Stack Developer
+B.Tech Student • AI/ML Developer
 
 ---
 
