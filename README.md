@@ -50,7 +50,7 @@ https://collegezen.vercel.app/api/colleges
 ## 🧠 Predictor Tool
 - Input exam and rank
 - Get predicted colleges
-- Rule-based prediction engine
+- Rule-based prediction enginee
 
 ## 🔐 Authentication & Saved Items
 - User login/register
