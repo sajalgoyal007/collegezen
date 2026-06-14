@@ -224,4 +224,3 @@ B.Tech Student • AI/ML Developer
 This project is built for educational and evaluation purposes.
 
 ```
-```
