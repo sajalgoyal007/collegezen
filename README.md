@@ -222,5 +222,3 @@ B.Tech Student • AI/ML Developer
 # 📄 License
 
 This project is built for educational and evaluation purposes.
-
-```
